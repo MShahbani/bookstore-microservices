@@ -2,18 +2,18 @@ using Order.Domain.Enums;
 
 namespace Order.Domain.Entities;
 
-public class Order
+public class OrderEntity
 {
     public Guid Id { get; private set; }
     public Guid BookId { get; private set; }
     public int Quantity { get; private set; }
     public OrderStatus Status { get; private set; }
 
-    private Order()
+    private OrderEntity()
     {
     }
 
-    public Order(Guid bookId, int quantity)
+    public OrderEntity(Guid bookId, int quantity)
     {
         if (bookId == Guid.Empty)
         {
@@ -35,7 +35,7 @@ public class Order
     {
         if (Status != OrderStatus.Pending)
         {
-            return;
+            throw new InvalidOperationException("Only pending orders can be confirmed.");
         }
 
         Status = OrderStatus.Confirmed;
@@ -45,9 +45,10 @@ public class Order
     {
         if (Status != OrderStatus.Pending)
         {
-            return;
+            throw new InvalidOperationException("Only pending orders can be failed.");
         }
 
         Status = OrderStatus.Failed;
     }
+
 }
