@@ -17,6 +17,11 @@ public class OrderRepository(OrderDbContext dbContext) : IOrderRepository
         return await dbContext.Orders.FirstOrDefaultAsync(order => order.Id == id, cancellationToken);
     }
 
+    public async Task<List<OrderEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+    {
+        return await dbContext.Orders.ToListAsync(cancellationToken);
+    }
+
     public void Update(OrderEntity orderEntity)
     {
         dbContext.Orders.Update(orderEntity);
