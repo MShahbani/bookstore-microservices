@@ -12,6 +12,9 @@
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.9" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.9" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.9" />
+        <PackageReference Include="RabbitMQ.Client" Version="7.2.1" />
+        <PackageReference Include="StackExchange.Redis" Version="3.0.47-preview" />
     </ItemGroup>
 
     <PropertyGroup>
